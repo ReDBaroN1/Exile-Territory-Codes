@@ -18,7 +18,7 @@ _known = _object getVariable ["ExileAlreadyKnownCode",""];
 private _playerUID = getPlayerUID player;
 private _flag = player call ExileClient_util_world_getTerritoryAtPosition;
 private _territoryModerators = _flag getVariable ["ExileTerritoryModerators", []];
-if ((_playerUID in _territoryModerators) && !ExileClientPlayerIsInCombat && (_object isKindOf "Exile_Construction_Abstract_Static")) then
+if ((_playerUID in _territoryModerators) && {!ExileClientPlayerIsInCombat} && {_object isKindOf "Exile_Construction_Abstract_Static" || {_object isKindOf "Exile_Container_Abstract"}}) then
 {
 	["lockToggle", [netId _object, "Moderator", _condition]] call ExileClient_system_network_send;
 }
